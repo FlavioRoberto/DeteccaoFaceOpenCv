@@ -20,9 +20,13 @@ import org.opencv.objdetect.CascadeClassifier;
  * @author Admin
  */
 public class DetectaObjeto {
+    
 
-    public static void Detectar(Mat imagemColorida, IParametrizacao cascade) {
-         
+    public static void Detectar(Mat imagemColorida, IParametrizacao cascade,Scalar cor) {
+        
+        if(cor == null)
+            cor = new Scalar(0,0,255);
+        
         if(cascade == null)
             return;
         
@@ -33,8 +37,12 @@ public class DetectaObjeto {
             //desenhando o retangulo na imagem
             Imgproc.rectangle(imagemColorida, new Point(result.x, result.y),
                     new Point(result.x + result.width, result.y + result.height),
-                    new Scalar(0, 0, 255), 2);
+                   cor, 2);
 
         }
+    }
+    
+    public static void Detectar(Mat imagemColorida, IParametrizacao cascade) {
+        DetectaObjeto.Detectar(imagemColorida, cascade, null);
     }
 }
