@@ -9,6 +9,7 @@ import util.ConverteImagemColoridaParaCinza;
 import util.DetectaObjeto;
 import util.GeradorDeImagem;
 import util.ParametrizacaoCascadeFace;
+import util.ParametrizacaoCascadeOlhos;
 
 public class TesteOpenCv {
 
@@ -17,10 +18,12 @@ public class TesteOpenCv {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
         System.out.println(Core.VERSION);
 
-        Mat imagemColorida = Imgcodecs.imread("src\\img\\pessoas\\pessoas3.jpg", Imgcodecs.CV_LOAD_IMAGE_COLOR);
+        Mat imagemColorida = Imgcodecs.imread("src\\img\\pessoas\\faceolho.jpg", Imgcodecs.CV_LOAD_IMAGE_COLOR);
         ParametrizacaoCascadeFace parametroFace = new ParametrizacaoCascadeFace(imagemColorida);
-        
-        DetectaObjeto.Detectar(imagemColorida,parametroFace);
+        DetectaObjeto.Detectar(imagemColorida, parametroFace);
+        ParametrizacaoCascadeOlhos parametroOlho = new ParametrizacaoCascadeOlhos(imagemColorida);
+        DetectaObjeto.Detectar(imagemColorida, parametroOlho);
+
         GeradorDeImagem gerador = new GeradorDeImagem(imagemColorida);
         gerador.Constroi();
     }
