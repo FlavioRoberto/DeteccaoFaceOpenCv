@@ -17,11 +17,11 @@ import org.opencv.core.Mat;
  *
  * @author Admin
  */
-public class GeradorDeIMagem {
+public class GeradorDeImagem {
     private Mat matrizImagem;
 
 
-    public GeradorDeIMagem(Mat matrizImagem) {
+    public GeradorDeImagem(Mat matrizImagem) {
         this.matrizImagem = matrizImagem;
     }
 
