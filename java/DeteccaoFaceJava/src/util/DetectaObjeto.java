@@ -1,0 +1,40 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package util;
+
+import static java.nio.file.Files.size;
+import org.opencv.core.Mat;
+import org.opencv.core.MatOfRect;
+import org.opencv.core.Point;
+import org.opencv.core.Rect;
+import org.opencv.core.Scalar;
+import org.opencv.core.Size;
+import org.opencv.imgproc.Imgproc;
+import org.opencv.objdetect.CascadeClassifier;
+
+/**
+ *
+ * @author Admin
+ */
+public class DetectaObjeto {
+
+    public static void Detectar(Mat imagemColorida, IParametrizacao cascade) {
+         
+        if(cascade == null)
+            return;
+        
+        if(cascade.resultadoDeteccao() == null)
+            return;
+        //percorrendo a matriz de faces detectadas
+        for (Rect result : cascade.resultadoDeteccao().toArray()) {
+            //desenhando o retangulo na imagem
+            Imgproc.rectangle(imagemColorida, new Point(result.x, result.y),
+                    new Point(result.x + result.width, result.y + result.height),
+                    new Scalar(0, 0, 255), 2);
+
+        }
+    }
+}

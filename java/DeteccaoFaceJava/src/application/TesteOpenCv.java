@@ -1,12 +1,14 @@
 package application;
 
+import java.lang.reflect.Parameter;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 import util.ConverteImagemColoridaParaCinza;
-import util.DetectaFace;
+import util.DetectaObjeto;
 import util.GeradorDeImagem;
+import util.ParametrizacaoCascadeFace;
 
 public class TesteOpenCv {
 
@@ -15,16 +17,10 @@ public class TesteOpenCv {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
         System.out.println(Core.VERSION);
 
-        //Convertendo a imagem para uma matriz numérica
-        /*Mat imagemColorida = Imgcodecs.imread("src\\img\\opencv.jpg", Imgcodecs.CV_LOAD_IMAGE_COLOR);
-        GeradorDeImagem gerador = new GeradorDeImagem(imagemColorida);
-        gerador.Constroi();
+        Mat imagemColorida = Imgcodecs.imread("src\\img\\pessoas\\pessoas3.jpg", Imgcodecs.CV_LOAD_IMAGE_COLOR);
+        ParametrizacaoCascadeFace parametroFace = new ParametrizacaoCascadeFace(imagemColorida);
         
-        Mat imagemCinza = ConverteImagemColoridaParaCinza.converte(imagemColorida);
-        GeradorDeImagem gerador2 = new GeradorDeImagem(imagemCinza);
-        gerador2.Constroi();*/
-        Mat imagemColorida = Imgcodecs.imread("src\\img\\pessoas\\beatles.jpg", Imgcodecs.CV_LOAD_IMAGE_COLOR);
-        DetectaFace.Detectar(imagemColorida);
+        DetectaObjeto.Detectar(imagemColorida,parametroFace);
         GeradorDeImagem gerador = new GeradorDeImagem(imagemColorida);
         gerador.Constroi();
     }
