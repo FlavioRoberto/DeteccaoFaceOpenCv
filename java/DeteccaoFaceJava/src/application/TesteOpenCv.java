@@ -5,6 +5,7 @@ import org.opencv.core.Mat;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 import util.ConverteImagemColoridaParaCinza;
+import util.DetectaFace;
 import util.GeradorDeImagem;
 
 public class TesteOpenCv {
@@ -15,12 +16,16 @@ public class TesteOpenCv {
         System.out.println(Core.VERSION);
 
         //Convertendo a imagem para uma matriz numérica
-        Mat imagemColorida = Imgcodecs.imread("src\\img\\opencv.jpg", Imgcodecs.CV_LOAD_IMAGE_COLOR);
+        /*Mat imagemColorida = Imgcodecs.imread("src\\img\\opencv.jpg", Imgcodecs.CV_LOAD_IMAGE_COLOR);
         GeradorDeImagem gerador = new GeradorDeImagem(imagemColorida);
         gerador.Constroi();
         
         Mat imagemCinza = ConverteImagemColoridaParaCinza.converte(imagemColorida);
         GeradorDeImagem gerador2 = new GeradorDeImagem(imagemCinza);
-        gerador2.Constroi();
+        gerador2.Constroi();*/
+        Mat imagemColorida = Imgcodecs.imread("src\\img\\pessoas\\beatles.jpg", Imgcodecs.CV_LOAD_IMAGE_COLOR);
+        DetectaFace.Detectar(imagemColorida);
+        GeradorDeImagem gerador = new GeradorDeImagem(imagemColorida);
+        gerador.Constroi();
     }
 }
