@@ -25,7 +25,7 @@ public class GeradorDeImagem {
         this.matrizImagem = matrizImagem;
     }
 
-    private BufferedImage ConverteMatParaImagem(){
+    public BufferedImage ConverteMatParaImagem(){
         if(matrizImagem == null)
             return null;
         int type = BufferedImage.TYPE_BYTE_GRAY;

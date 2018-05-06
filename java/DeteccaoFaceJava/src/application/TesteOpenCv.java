@@ -19,7 +19,7 @@ public class TesteOpenCv {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
         System.out.println(Core.VERSION);
 
-        Mat imagemColorida = Imgcodecs.imread("src\\img\\pessoas\\pessoas4.jpg", Imgcodecs.CV_LOAD_IMAGE_COLOR);
+        Mat imagemColorida = Imgcodecs.imread("src\\img\\pessoas\\beatles.jpg", Imgcodecs.CV_LOAD_IMAGE_COLOR);
         ParametrizacaoCascadeFace parametroFace = new ParametrizacaoCascadeFace(imagemColorida);
         DetectaObjeto.Detectar(imagemColorida, parametroFace);
         ParametrizacaoCascadeOlhos parametroOlho = new ParametrizacaoCascadeOlhos(imagemColorida);

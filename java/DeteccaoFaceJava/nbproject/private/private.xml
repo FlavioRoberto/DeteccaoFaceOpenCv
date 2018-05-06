@@ -4,8 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Admin/Documents/gitKraken/DeteccaoFaceOpenCv/java/DeteccaoFaceJava/src/util/GeradorDeImagem.java</file>
+            <file>file:/C:/Users/Admin/Documents/gitKraken/DeteccaoFaceOpenCv/java/DeteccaoFaceJava/src/util/WebCam.java</file>
+            <file>file:/C:/Users/Admin/Documents/gitKraken/DeteccaoFaceOpenCv/java/DeteccaoFaceJava/src/util/ParametrizacaoCascadeOlhos.java</file>
             <file>file:/C:/Users/Admin/Documents/gitKraken/DeteccaoFaceOpenCv/java/DeteccaoFaceJava/src/application/TesteOpenCv.java</file>
-            <file>file:/C:/Users/Admin/Documents/gitKraken/DeteccaoFaceOpenCv/java/DeteccaoFaceJava/src/util/ConverteImagemColoridaParaCinza.java</file>
         </group>
     </open-files>
 </project-private>
