@@ -8,22 +8,20 @@ package util;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.videoio.VideoCapture;
 
+
 public class WebCam extends javax.swing.JFrame {
 
     private final int ID_DISPOSITIVO = 0;
-    private VideoCapture captura;
-
     public WebCam() {
         initComponents();
     }
 
+  
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -31,11 +29,6 @@ public class WebCam extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -68,63 +61,39 @@ public class WebCam extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        captura.release();
-        try {
-            this.finalize();
-        } catch (Throwable ex) {
-            Logger.getLogger(WebCam.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_formWindowClosing
-
     public static void main(String args[]) {
-        //carregando a biblioteca do openCV
-        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-        WebCam janela = new WebCam();
-
-        //definindo configuração dos parametros
-        janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        janela.setVisible(true);
-
-        janela.exibeVideo();
-
+      //carregando a biblioteca do openCV
+      System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+      WebCam janela = new WebCam();
+      
+      //definindo configuração dos parametros
+      janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      janela.setVisible(true);
+      
+      janela.exibeVideo();
+      
     }
-
-    private void exibeVideo() {
+    
+    
+    private void exibeVideo(){
         Mat video = new Mat();
-        captura = new VideoCapture(ID_DISPOSITIVO);
-
-        if (!captura.isOpened()) {
+        VideoCapture captura = new VideoCapture(ID_DISPOSITIVO);
+       
+        if(!captura.isOpened())
             return;
-        }
-
-        while (true) {
+        
+        while(true){
             captura.read(video);
-            if (!video.empty()) {
-
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        setSize(video.width() + 25, video.height() + 50);
-                        GeradorDeImagem gerenDeImagem = new GeradorDeImagem(video);
-                        DetectaObjeto.Detectar(video, new ParametrizacaoWebCam(video));
-                        BufferedImage imagemConvertida = gerenDeImagem.ConverteMatParaImagem();
-                        Graphics grafico = jPanel1.getGraphics();
-                        grafico.drawImage(imagemConvertida, 0, 0, imagemConvertida.getWidth(),
-                                imagemConvertida.getHeight(), null);
-                    }
-                }.run();
-
+            if(!video.empty()){
+                setSize(video.width()+25,video.height()+50);
+                GeradorDeImagem gerenDeImagem = new GeradorDeImagem(video);
+                BufferedImage imagemConvertida = gerenDeImagem.ConverteMatParaImagem();
+                Graphics grafico = jPanel1.getGraphics();
+                grafico.drawImage(imagemConvertida,0,0,imagemConvertida.getWidth()
+                        ,imagemConvertida.getHeight(),null);
             }
-
+                   
         }
-    }
-
-    @Override
-    protected void finalize() throws Throwable {
-        captura.release();
-        super.finalize(); //To change body of generated methods, choose Tools | Templates.
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
